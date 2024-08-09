@@ -106,4 +106,4 @@ Nosso sistema √© projetado para facilitar o cadastro, gerenciamento e distribui√
 
 -**Gabriel Abreu Miller Godoi**
 
--**Gabriel Henrique Silva**
+-**Gabriel Henrique Silva** - *Back-end*
