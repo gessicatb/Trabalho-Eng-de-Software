@@ -1,109 +1,96 @@
+
 # Distribuidora de Jogos
-Sistema para cadastro e distribuição de jogos. Os usuários da nossa plataforma são desenvolvedores de jogos e estúdios de desenvolvimento, são aqueles que detêm os direitos de um ou mais jogos.
 
-## Descrição
+## Escopo do Sistema
+O sistema "Distribuidora de Jogos" é projetado para facilitar o cadastro, gerenciamento e distribuição de jogos desenvolvidos por estúdios e desenvolvedores independentes. O objetivo é fornecer uma plataforma que permita o registro e a distribuição de jogos, além da visualização dos ganhos obtidos com cada título. O sistema inclui funcionalidades para cadastro e login de usuários (desenvolvedores e estúdios), gerenciamento de pessoas envolvidas no desenvolvimento, cadastro de jogos com detalhes específicos, visualização de ganhos e relatórios detalhados.
 
-Nosso sistema é projetado para facilitar o cadastro, gerenciamento e distribuição de jogos desenvolvidos por estúdios e desenvolvedores independentes. Ele oferece uma interface intuitiva e funcionalidades abrangentes para garantir que os jogos sejam cadastrados corretamente e estejam prontos para distribuição nas plataformas de venda e distribuição.
+**Funcionalidades Principais**:
 
 1. **Tela de Cadastro e Login de Usuários**
-    - Os usuários são os desenvolvedores e estúdios de desenvolvimento. É de responsabilidade deles cadastrar os jogos e também as pessoas que participam no desenvolvimento desses jogos.
-    - Para cadastro do usuário guardamos o seguinte:
-        - Nome
-        - Email
-        - Senha
-        - CNPJ/CPF
-        - Dados Bancários
+- Os usuários são os desenvolvedores e estúdios de desenvolvimento. É de responsabilidade deles cadastrar os jogos e também as pessoas que participam no desenvolvimento desses jogos.
+- Para cadastro do usuário guardamos o seguinte:
+   - Nome
+   - Email
+   - Senha
+   - CNPJ/CPF
+   - Dados Bancários
 
 2. **Tela de Cadastro de Pessoas**
-    - Todo usuário do sistema pode cadastrar uma pessoa se ela ainda não estiver no banco. As pessoas assumem papel no desenvolvimento dos jogos. Guardamos as seguintes informações:
-        - Nome
-        - Email
-        - CPF
-        - Rede Social
-        - Telefone
+- Todo usuário do sistema pode cadastrar uma pessoa se ela ainda não estiver no banco. As pessoas assumem papel no desenvolvimento dos jogos. Guardamos as seguintes informações:
+   - Nome
+   - Email
+   - CPF
+   - Rede Social
+   - Telefone
 
 3. **Cadastro de Jogos**
-    - Código de barras (ou SKU) deve ser único por jogo.
-    - Um jogo pode ser um título único ou parte de uma série/franquia. Cada jogo deve conter as seguintes informações:
-        - Título do Jogo
-        - Plataforma (PC, console, mobile)
-        - Gênero
-        - Data de Lançamento
-        - ISRC (International Standard Recording Code) único
-        - Informações sobre desenvolvedores, designers, artistas, etc.
+- Código de barras (ou SKU) deve ser único por jogo.
+- Um jogo pode ser um título único ou parte de uma série/franquia. Cada jogo deve conter as seguintes informações:
+   - Título do Jogo
+   - Plataforma (PC, console, mobile)
+   - Gênero
+   - Data de Lançamento
+   - ISRC (International Standard Recording Code) único
+   - Informações sobre desenvolvedores, designers, artistas, etc.
 
 4. **Visualização dos Ganhos Recebidos por Jogo**
-    - Relatórios detalhados sobre os ganhos recebidos por cada jogo ou franquia, incluindo estatísticas de vendas e receitas.
+- Relatórios detalhados sobre os ganhos recebidos por cada jogo ou franquia, incluindo estatísticas de vendas e receitas.
 
 5. **Capacidade de Deletar**
-    - Possibilidade de deletar registros de jogos e pessoas cadastradas, com as devidas verificações de segurança para evitar exclusões acidentais.
-
-## Backlog do Produto
-
-1. **Cadastro de Usuário**
-    - Tela de cadastro de novos usuários
-    - Tela de login de usuários existentes
-
-2. **Cadastro de Pessoas**
-    - Tela para adicionar novas pessoas ao sistema
-    - Tela para visualizar e editar informações de pessoas cadastradas
-
-3. **Cadastro de Jogos**
-    - Tela para adicionar novos jogos ao sistema
-    - Tela para editar informações de jogos existentes
-
-4. **Visualização de Ganhos**
-    - Tela para visualizar os ganhos por jogo
-    - Tela para visualizar relatórios detalhados de vendas e receitas
-
-5. **Deletar Registros**
-    - Funcionalidade para deletar jogos cadastrados
-    - Funcionalidade para deletar pessoas cadastradas
-
-6. **Notificações**
-    - Sistema de notificações para informar sobre novas vendas e ganhos
-    - Notificações sobre atualizações importantes no sistema
-
-7. **Pesquisa Avançada**
-    - Funcionalidade de busca avançada para jogos e pessoas
-    - Filtros para refinar os resultados de busca
-
-8. **Integração com Plataformas de Vendas**
-    - Integração com plataformas de venda de jogos (Steam, PlayStation Store, etc.)
-    - Sincronização automática de vendas e ganhos
-
-9. **Segurança**
-    - Implementação de autenticação e autorização robustas
-    - Criptografia de dados sensíveis
-
-10. **Suporte ao Cliente**
-    - Sistema de suporte integrado para ajudar os usuários
-    - Base de conhecimento e FAQs
-
-## Backlog do Sprint
-
-1. **CRUD de Usuários**
-    - Implementação das funcionalidades de Create, Read, Update e Delete para usuários
-
-2. **CRUD de Pessoas**
-    - Implementação das funcionalidades de Create, Read, Update e Delete para pessoas
-
-3. **CRUD de Jogos**
-    - Implementação das funcionalidades de Create, Read, Update e Delete para jogos
-
-4. **Visualização de Ganhos**
-    - Desenvolvimento da tela de visualização dos ganhos por jogo
-
-5. **Notificações**
-    - Implementação do sistema de notificações para novas vendas e ganhos
-
+- Possibilidade de deletar registros de jogos e pessoas cadastradas, com as devidas verificações de segurança para evitar exclusões acidentais.
 
 ## Membros da Equipe e Papel
-
 -**Gessica Teixeira Bomfim** - *Full-Stack Developer* - [GitHub Gessica](https://github.com/linkParaPerfil)
 
--**Alexssander Fernandes Candido**
+-**Alexssander Fernandes Candido** - *Backend Developer* [GitHub Alexssander](https://github.com/JuBinLuB)
 
--**Gabriel Abreu Miller Godoi**
+-**Gabriel Abreu Miller Godoi** - [Papel a ser definido]
 
--**Gabriel Henrique Silva**
+-**Gabriel Henrique Silva** - [Papel a ser definido]
+## Tecnologias
+- **Linguagem de Programação**: Python
+- **Banco de Dados**: PostgreSQL
+## Backlogs
+
+### Backlog do Produto
+1. **História do Usuário**: Como desenvolvedor ou estúdio, quero cadastrar novos usuários para gerenciar jogos e pessoas associadas.
+2. **História do Usuário**: Como desenvolvedor ou estúdio, quero adicionar pessoas ao sistema com informações detalhadas para atribuí-las aos jogos.
+3. **História do Usuário**: Como desenvolvedor ou estúdio, quero cadastrar novos jogos com informações completas para disponibilizá-los na plataforma.
+4. **História do Usuário**: Como desenvolvedor ou estúdio, quero visualizar relatórios de ganhos por jogo para analisar o desempenho financeiro.
+5. **História do Usuário**: Como desenvolvedor ou estúdio, quero deletar registros de jogos e pessoas quando necessário para manter o sistema atualizado.
+6. **História do Usuário**: Como desenvolvedor ou estúdio, quero receber notificações sobre novas vendas e atualizações importantes para estar sempre informado.
+7. **História do Usuário**: Como desenvolvedor ou estúdio, quero realizar pesquisas avançadas de jogos e pessoas para encontrar informações específicas rapidamente.
+8. **História do Usuário**: Como desenvolvedor ou estúdio, quero integrar o sistema com plataformas de vendas para sincronizar automaticamente vendas e ganhos.
+9. **História do Usuário**: Como desenvolvedor ou estúdio, quero que o sistema tenha autenticação e autorização seguras para proteger os dados sensíveis.
+10. **História do Usuário**: Como desenvolvedor ou estúdio, quero um sistema de suporte ao cliente para resolver dúvidas e problemas rapidamente.
+
+### Backlog da Sprint
+1. **História do Usuário**: Como desenvolvedor ou estúdio, quero cadastrar novos usuários.
+- **Tarefas**:
+     - Implementar a funcionalidade de cadastro de usuários.
+     - Desenvolver a interface de usuário para cadastro e login.
+     - Configurar a persistência de dados dos usuários no banco de dados.
+
+2. **História do Usuário**: Como desenvolvedor ou estúdio, quero adicionar novas pessoas ao sistema.
+- **Tarefas**:
+     - Implementar a funcionalidade de cadastro de pessoas.
+     - Desenvolver a interface para adicionar e gerenciar informações de pessoas.
+     - Configurar a persistência de dados das pessoas no banco de dados.
+
+3. **História do Usuário**: Como desenvolvedor ou estúdio, quero cadastrar novos jogos.
+- **Tarefas**:
+     - Implementar a funcionalidade de cadastro de jogos.
+     - Desenvolver a interface para inserir e editar informações dos jogos.
+     - Configurar a persistência de dados dos jogos no banco de dados.
+
+4. **História do Usuário**: Como desenvolvedor ou estúdio, quero visualizar os ganhos recebidos por jogo.
+- **Tarefas**:
+     - Desenvolver a tela para visualização de ganhos por jogo.
+     - Implementar relatórios detalhados de vendas e receitas.
+     - Integrar com o backend para fornecer dados atualizados.
+
+5. **História do Usuário**: Como desenvolvedor ou estúdio, quero receber notificações sobre novas vendas e atualizações importantes.
+- **Tarefas**:
+    - Implementar o sistema de notificações.
+    - Desenvolver a interface para exibir notificações.
+    - Configurar regras e gatilhos para envio de notificações.
