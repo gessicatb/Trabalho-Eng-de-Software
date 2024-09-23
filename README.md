@@ -94,9 +94,9 @@ O sistema "Distribuidora de Jogos" é projetado para facilitar o cadastro, geren
     - Implementar o sistema de notificações.
     - Desenvolver a interface para exibir notificações.
     - Configurar regras e gatilhos para envio de notificações.
-6. **Diagrama de classes**:
+6. **Diagrama de Classes**:
   ![Captura de tela 2024-09-22 232956](https://github.com/user-attachments/assets/d20b65b4-4c07-4fa2-ab2b-76e9ec0bc7ac)
 
-7. **Diagram de atividades**
+7. **Diagrama de Atividades**
    ![Captura de tela 2024-09-22 233155](https://github.com/user-attachments/assets/7978dd37-db4c-4ef0-86cc-9af2fdb5c423)
 
