@@ -99,6 +99,6 @@ O sistema "Distribuidora de Jogos" é projetado para facilitar o cadastro, geren
 7. **Diagrama de Atividades**
    ![Captura de tela 2024-09-22 233155](https://github.com/user-attachments/assets/7978dd37-db4c-4ef0-86cc-9af2fdb5c423)
 
-8. **Interface - Figma
+8. **Interface - Figma**
    Link do protótipo: https://www.figma.com/design/KKrtFos5nfhSKV3wNS561z/LevelUP?node-id=0-1&t=qyWs8kaNPpC4PP9Z-1
 
