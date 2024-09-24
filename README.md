@@ -97,13 +97,29 @@ O sistema "Distribuidora de Jogos" é projetado para facilitar o cadastro, geren
 
 # Diagramas
 - **Diagrama de Classes**:
-   ![Class Diagram](https://github.com/user-attachments/assets/2af8af97-d4ea-4975-aff8-c383dd149823)
+<div align="center">
+   <img src="https://github.com/user-attachments/assets/2af8af97-d4ea-4975-aff8-c383dd149823" alt="Imagem1" width="720"/>
+   <br/>
+   <em>Figura 1: Diagrama de Classes</em>
+</div>
+
+<br/><br/>
 
 - **Diagrama de Atividades**:
-![diagrama atividades cadastro pessoa](https://github.com/user-attachments/assets/5544492e-a027-4451-bb4a-d892caa37a56)
+<div align="center">
+   <img src="https://github.com/user-attachments/assets/5544492e-a027-4451-bb4a-d892caa37a56" alt="Imagem2" width="720"/>
+   <br/>
+   <em>Figura 2: Diagrama de Atividades para cadastro de pessoa</em>
+</div>
 
-![diagrama atividades deletar produto](https://raw.githubusercontent.com/gessicatb/Trabalho-Eng-de-Software/refs/heads/main/diagrama%20de%20atividades/Delete%20Product%20Activity%20Diagram0.png)
+<br/><br/>
 
+<div align="center">
+   <img src="https://raw.githubusercontent.com/gessicatb/Trabalho-Eng-de-Software/refs/heads/main/diagrama%20de%20atividades/Delete%20Product%20Activity%20Diagram0.png" alt="Imagem3" width="720"/>
+   <br/>
+   <em>Figura 3: Diagrama de Atividades para deletar produto</em>
+</div>
+ 
 # Protótipo de Interface
 Link do protótipo: https://www.figma.com/design/KKrtFos5nfhSKV3wNS561z/LevelUP?node-id=0-1&t=qyWs8kaNPpC4PP9Z-1
 
