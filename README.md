@@ -97,10 +97,10 @@ O sistema "Distribuidora de Jogos" é projetado para facilitar o cadastro, geren
 
 # Diagramas
 - **Diagrama de Classes**:
-  ![Captura de tela 2024-09-22 232956](https://github.com/user-attachments/assets/d20b65b4-4c07-4fa2-ab2b-76e9ec0bc7ac)
+   ![Class Diagram](https://github.com/user-attachments/assets/2af8af97-d4ea-4975-aff8-c383dd149823)
 
-- **Diagrama de Atividades**
-   ![Captura de tela 2024-09-22 233155](https://github.com/user-attachments/assets/7978dd37-db4c-4ef0-86cc-9af2fdb5c423)
+- **Diagrama de Atividades**:
+![diagrama atividades cadastro pessoa](https://github.com/user-attachments/assets/5544492e-a027-4451-bb4a-d892caa37a56)
 
    <!-- ![image](https://github.com/user-attachments/assets/fd0cead2-85af-46a7-ad41-f3034765e9de) -->
 
