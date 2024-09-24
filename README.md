@@ -95,7 +95,7 @@ O sistema "Distribuidora de Jogos" é projetado para facilitar o cadastro, geren
     - Desenvolver a interface para exibir notificações.
     - Configurar regras e gatilhos para envio de notificações.
 
-# Diagramas
+# Diagramas UML
 - **Diagrama de Classes**:
 <div align="center">
    <img src="https://github.com/user-attachments/assets/2af8af97-d4ea-4975-aff8-c383dd149823" alt="Imagem1" width="720"/>
