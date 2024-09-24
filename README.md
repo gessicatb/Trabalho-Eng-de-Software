@@ -102,7 +102,7 @@ O sistema "Distribuidora de Jogos" é projetado para facilitar o cadastro, geren
 - **Diagrama de Atividades**:
 ![diagrama atividades cadastro pessoa](https://github.com/user-attachments/assets/5544492e-a027-4451-bb4a-d892caa37a56)
 
-   <!-- ![image](https://github.com/user-attachments/assets/fd0cead2-85af-46a7-ad41-f3034765e9de) -->
+![diagrama atividades deletar produto](https://raw.githubusercontent.com/gessicatb/Trabalho-Eng-de-Software/refs/heads/main/diagrama%20de%20atividades/Delete%20Product%20Activity%20Diagram0.png)
 
 # Protótipo de Interface
 Link do protótipo: https://www.figma.com/design/KKrtFos5nfhSKV3wNS561z/LevelUP?node-id=0-1&t=qyWs8kaNPpC4PP9Z-1
