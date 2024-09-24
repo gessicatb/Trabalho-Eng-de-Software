@@ -1,4 +1,7 @@
 ![image](https://github.com/user-attachments/assets/fd0cead2-85af-46a7-ad41-f3034765e9de)
+
+Link do protótipo: https://www.figma.com/design/KKrtFos5nfhSKV3wNS561z/LevelUP?node-id=0-1&t=qyWs8kaNPpC4PP9Z-1
+
 # Distribuidora de Jogos
 
 ## Escopo do Sistema
