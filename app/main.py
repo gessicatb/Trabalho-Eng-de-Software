@@ -1,22 +1,26 @@
+from tkinter.ttk import *
 from tkinter import *
-import customtkinter as ctk
-import tkinter.messagebox as tkmb
 from usuario import Usuario
+import customtkinter as ctk
 
+def main() -> None:
+    # Cria tkinter geral
+    app = ctk.CTk()
 
-# selecionando o tema - dark, light , system (for system default)
-ctk.set_appearance_mode("dark")
-# selecionando cor tema - blue, green, dark-blue
-ctk.set_default_color_theme("dark-blue")
-# cria tkinter geral
-app = ctk.CTk()
-# configura fontes
-title_font = ctk.CTkFont(family="sans-serif", size=20, slant="italic", weight="bold")
-placeholder_botao = ctk.CTkFont(family="arial", size=15) 
+    # Selecionando o tema - dark, light , system (for system default)
+    app.set_appearance_mode("dark")
+    
+    # Selecionando cor tema - blue, green, dark-blue
+    app.set_default_color_theme("dark-blue")
+    
+    # Configura fontes
+    title_font = ctk.CTkFont(family="sans-serif", size=20, slant="italic", weight="bold")
+    placeholder_botao = ctk.CTkFont(family="arial", size=15)
+
+    _ = Usuario(app, title_font, placeholder_botao)
+
+    # Inicia aplicação tkinter
+    app.mainloop()
 
 if __name__ == "__main__":
-    Usuario(app)
-
-#inicia aplicação tkinter
-app.mainloop()
-#testa
+    main()
