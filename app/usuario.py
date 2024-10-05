@@ -15,9 +15,9 @@ class Usuario():
 
     def telaLogin(self):
         self.app.geometry("800x800")
-        self.app.title("Login distribuidora musical")
+        self.app.title("Login distribuidora de jogos")
         self.label = ctk.CTkLabel(
-            self.app, text="Seja bem vindo a sua distribuidora de música digital!", font=self.title_font)
+            self.app, text="Seja bem vindo a sua distribuidora de jogos digitais!", font=self.title_font)
         self.label.pack(pady=20)
 
         self.frame = ctk.CTkFrame(master=self.app)
