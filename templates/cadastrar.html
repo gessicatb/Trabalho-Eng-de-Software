@@ -7,15 +7,23 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 <body>
+    <a href="/resumo" class="control-button"> <!-- O ícone do controle agora funciona como botão de voltar -->
+        <img src="{{ url_for('static', filename='images/controller.png') }}" alt="Control" class="controller-icon">
+    </a>
     <div class="container">
-        <h1>Cadastrar</h1>
+        <h1 class="title">
+            Criar<br>
+            Conta
+        </h1>
         <form action="/cadastrar" method="post">
-            <input type="text" name="usuario" placeholder="Usuário" required>
+            <input type="text" name="nome" placeholder="Nome" required>
+            <input type="email" name="email" placeholder="Email" required>
             <input type="password" name="senha" placeholder="Senha" required>
-            <input type="email" name="email" placeholder="E-mail" required>
+            <input type="text" name="cnpj" placeholder="CNPJ" required>
+            <input type="text" name="dados_bancarios" placeholder="Dados Bancários" required>
             <button type="submit">Cadastrar</button>
         </form>
-        <p>Já tem uma conta? <a href="/entrar">Entre aqui</a></p>
+        <p>Já possui uma conta? <a href="/entrar" class="entrar">Entre aqui</a></p>
     </div>
 </body>
 </html>
