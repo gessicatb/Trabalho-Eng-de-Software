@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Distribuidora de Jogos</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1 class="title">LEVELUP</h1>
+        <img src="{{ url_for('static', filename='images/controller.png') }}" alt="Controller" class="controller">
+        <div class="buttons">
+            <a href="/entrar" class="btn">Entrar</a>
+            <a href="/cadastrar" class="btn">Cadastrar</a>
+        </div>
+    </div>
+</body>
+</html>
