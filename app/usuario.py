@@ -86,7 +86,24 @@ class Usuario():
         self.checkbox.pack(pady=12, padx=10)
 
     def cadastrar(self):
-        pass
-
+        # Conectando banco de dados
+        banco = Banco()
+        bd = banco.conexao.cursor()
+        try:
+            # Execute the INSERT statement
+            sql = """INSERT INTO public."Usuario"("Nome", "Email", "Senha", "CNPJ", "DadosBancario") VALUES(%s,%s,%s,%s,%s)"""
+            bd.execute(sql, (self.nameEntry.get(), self.emailEntry.get(
+            ), self.senhaEntry.get(), self.cnpjEntry.get(), self.bancoEntry.get()))
+            # Commit the changes to the database
+            banco.conexao.commit()
+            # Close communication with the database
+            bd.close()
+        except (Exception, psycopg2.DatabaseError) as error:
+            print(error)
+        finally:
+            if banco is not None:
+                tkmb.showinfo(title="CadastradoSucesso",
+                              message="Cadastro realizado com sucesso!")
+                
     def cadastro(self):
         pass
