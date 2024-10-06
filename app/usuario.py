@@ -1,7 +1,13 @@
+import tkinter as tk
+from tkinter import ttk
 from tkinter.ttk import *
 from tkinter import *
-from PIL import Image, ImageTk
 import customtkinter as ctk
+import tkinter.messagebox as tkmb
+from PIL import Image, ImageTk
+import psycopg2
+from conexaobd import Banco
+from datetime import date
 
 class Usuario():
     def __init__(self, app, placeholder_botao, title_font):
@@ -11,7 +17,33 @@ class Usuario():
         self.telaLogin()
 
     def login(self):
-        pass
+        # conectando banco de dados
+        banco = Banco()
+        bd = banco.conexao.cursor()
+
+        # realiza busca
+        buscaCnpj = """ SELECT "CNPJ" FROM public."Usuario" where "CNPJ" = %s; """
+        buscaSenha = """ SELECT "Senha" FROM public."Usuario" where "CNPJ" = %s; """
+        bd.execute(buscaCnpj, (self.user_entry.get(),))
+        self.username = bd.fetchone()
+
+        bd.execute(buscaSenha, (self.user_entry.get(),))
+        self.password = bd.fetchone()
+
+        # fecha comunicação com banco
+        bd.close()
+
+        # testando credenciais
+        if self.username and self.password and self.user_pass.get() == self.password[0]:
+            # Oculta a janela de login
+            self.app.withdraw()
+            self.cnpj = self.username
+            Produto(self.app, self.cnpj)
+
+        elif self.username and self.user_pass.get() != self.password[0]:
+            tkmb.showwarning(title='Senha incorreta', message='Senha incorreta')
+        else:
+            tkmb.showerror(title="Falha no login", message="usuário e senha incorretos")
 
     def telaLogin(self):
         self.app.geometry("800x800")
@@ -23,7 +55,7 @@ class Usuario():
         self.frame = ctk.CTkFrame(master=self.app)
         self.frame.pack(pady=20, padx=40, fill='both', expand=True)
 
-        self.my_image = Image.open("interface/image/logo.png")
+        self.my_image = Image.open("app/image/logo.png")
         self.my_image = ImageTk.PhotoImage(
             self.my_image.resize((200, 200)))  # Resize the image
         self.image_label = ctk.CTkLabel(
