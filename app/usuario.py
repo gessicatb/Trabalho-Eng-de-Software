@@ -1,13 +1,12 @@
-import tkinter as tk
-from tkinter import ttk
 from tkinter.ttk import *
 from tkinter import *
+from PIL import Image, ImageTk
+from conexaobd import Banco
+from produto import Produto
 import customtkinter as ctk
 import tkinter.messagebox as tkmb
-from PIL import Image, ImageTk
+import tkinter as tk
 import psycopg2
-from conexaobd import Banco
-from datetime import date
 
 class Usuario():
     def __init__(self, app, placeholder_botao, title_font):
@@ -106,4 +105,70 @@ class Usuario():
                               message="Cadastro realizado com sucesso!")
                 
     def cadastro(self):
-        pass
+        telaCadastro = ctk.CTkToplevel(self.app)
+        telaCadastro.title("Tela Cadastro")
+        telaCadastro.geometry("800x800")
+
+        self.label = ctk.CTkLabel(
+            telaCadastro, text="Cadastre seus dados:", font=self.title_font)
+        self.label.pack(pady=20)
+        # Frame
+        self.frameCadastro = ctk.CTkFrame(master=telaCadastro)
+        self.frameCadastro.pack(
+            pady=20, padx=40, fill='both', anchor=tk.CENTER, expand=True)
+
+        # Nome Label
+        self.nameLabel = ctk.CTkLabel(
+            master=self.frameCadastro, text="Nome", font=self.placeholder_botao)
+        self.nameLabel.grid(row=0, column=0, padx=20, pady=20, sticky="ew")
+        # Nome Entry Field
+        self.nameEntry = ctk.CTkEntry(
+            master=self.frameCadastro, placeholder_text="nome profissional", font=self.placeholder_botao, width=400)
+        self.nameEntry.grid(row=0, column=1, columnspan=3,
+                            padx=20, pady=20, sticky="ew")
+
+        # Email Label
+        self.emailLabel = ctk.CTkLabel(
+            master=self.frameCadastro, text="Email", font=self.placeholder_botao)
+        self.emailLabel.grid(row=1, column=0, padx=20, pady=20, sticky="ew")
+        # Email Entry Field
+        self.emailEntry = ctk.CTkEntry(
+            master=self.frameCadastro, placeholder_text="email principal", font=self.placeholder_botao, width=400)
+        self.emailEntry.grid(row=1, column=1, columnspan=3,
+                             padx=20, pady=20, sticky="ew")
+
+        # Senha Label
+        self.senhaLabel = ctk.CTkLabel(
+            master=self.frameCadastro, text="Senha", font=self.placeholder_botao)
+        self.senhaLabel.grid(row=2, column=0, padx=20, pady=20, sticky="ew")
+        # Senha Entry Field
+        self.senhaEntry = ctk.CTkEntry(
+            master=self.frameCadastro, placeholder_text="senha", font=self.placeholder_botao, width=400)
+        self.senhaEntry.grid(row=2, column=1, columnspan=3,
+                             padx=20, pady=20, sticky="ew")
+
+        # CNPJ Label
+        self.cnpjLabel = ctk.CTkLabel(
+            master=self.frameCadastro, text="CNPJ", font=self.placeholder_botao)
+        self.cnpjLabel.grid(row=3, column=0, padx=20, pady=20, sticky="ew")
+        # CNPJ Entry Field
+        self.cnpjEntry = ctk.CTkEntry(
+            master=self.frameCadastro, placeholder_text="apenas números (12345678000100)", font=self.placeholder_botao, width=400)
+        self.cnpjEntry.grid(row=3, column=1, columnspan=3,
+                            padx=20, pady=20, sticky="ew")
+
+        # Dados bancarios Label
+        self.bancoLabel = ctk.CTkLabel(
+            master=self.frameCadastro, text="Dados Bancarios", font=self.placeholder_botao)
+        self.bancoLabel.grid(row=4, column=0, padx=20, pady=20, sticky="ew")
+        # Dados bancarios Entry Field
+        self.bancoEntry = ctk.CTkEntry(
+            master=self.frameCadastro, placeholder_text="n° conta, n° banco, n° agencia", font=self.placeholder_botao, width=400)
+        self.bancoEntry.grid(row=4, column=1, columnspan=3,
+                             padx=20, pady=20, sticky="ew")
+
+        # Botao
+        self.botaoCadastro = ctk.CTkButton(
+            master=self.frameCadastro, text='Cadastrar', width=250, font=self.placeholder_botao, command=self.cadastrar)
+        self.botaoCadastro.grid(
+            row=5, column=1, columnspan=3, padx=20, pady=20, sticky="ew")

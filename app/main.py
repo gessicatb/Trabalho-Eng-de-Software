@@ -1,10 +1,8 @@
 from tkinter.ttk import *
 from tkinter import *
+from usuario import Usuario
 import customtkinter as ctk
 import tkinter.messagebox as tkmb
-
-from usuario import Usuario
-
 
 # selecionando o tema - dark, light , system (for system default)
 ctk.set_appearance_mode("dark")
@@ -20,6 +18,6 @@ placeholder_botao = ctk.CTkFont(family="arial", size=15)
 app.mainloop()
 
 if __name__ == "__main__":
-    Usuario(app,placeholder_botao,title_font)
+    Usuario(app, placeholder_botao, title_font)
     
 app.mainloop()    
