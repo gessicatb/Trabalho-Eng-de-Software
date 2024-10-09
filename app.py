@@ -25,8 +25,10 @@ def entrar():
     if request.method == 'POST':
         cnpj = request.form['cnpj']
         senha = request.form['senha']
-        # Adicione lógica para autenticação
-        return redirect(url_for('resumo'))  # Redireciona para a tela de resumo após entrar
+        usuario = Usuario.query.filter_by(cnpj=cnpj).first()
+        if usuario and check_password_hash(usuario.senha, senha):
+            return redirect(url_for('resumo'))  
+        flash('CNPJ ou senha incorretos', 'error')
     return render_template('entrar.html')
 
 @app.route('/cadastrar', methods=['GET', 'POST'])
