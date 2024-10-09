@@ -1,6 +1,17 @@
 from flask import Flask, render_template, request, redirect, url_for
+from models import db,Usuario,Pessoa,Jogo
+from flask_sqlalchemy import SQLAlchemy
+from werkzeug.security import generate_password_hash, check_password_hash
+import configparser 
 
 app = Flask(__name__)
+
+config = configparser.ConfigParser()
+config.read('database.ini')
+
+app.config['SQLALCHEMY_DATABASE_URI'] = f"postgresql://{config['postgresql']['user']}:{config['postgresql']['password']}@{config['postgresql']['host']}:{config['postgresql']['port']}/{config['postgresql']['dbname']}"
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+app.secret_key = 'sua_chave_secreta' 
 
 @app.route('/')
 def home():
@@ -20,10 +31,12 @@ def cadastrar():
     if request.method == 'POST':
         nome = request.form['nome']
         email = request.form['email']
-        senha = request.form['senha']
+        senha = generate_password_hash(request.form['senha'])
         cnpj = request.form['cnpj']
         dados_bancarios = request.form['dados_bancarios']
-        # Adicione lógica para salvar o novo usuário
+        novo_usuario = Usuario(nome=nome, email=email, senha=senha, cnpj=cnpj, dados_bancarios=dados_bancarios)
+        db.session.add(novo_usuario)
+        db.session.commit()
         return redirect(url_for('resumo'))  # Redireciona para a tela de resumo após cadastro
     return render_template('cadastrar.html')
 
