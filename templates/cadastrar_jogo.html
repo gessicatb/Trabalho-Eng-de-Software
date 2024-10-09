@@ -20,6 +20,19 @@
 
     <div class="container-game-register">
         <h1>Cadastrar Jogo</h1>
+
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                <div class="flash-messages">
+                    <ul>
+                        {% for category, message in messages %}
+                            <li class="{{ category }}">{{ message }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            {% endif %}
+        {% endwith %}
+
         <form action="/cadastrar_jogo" method="POST" enctype="multipart/form-data">
             <div class="form-layout">
                 <div class="left-column">
@@ -65,7 +78,6 @@
 
             // Abrir seletor de arquivo ao clicar na área de upload
             imageUpload.addEventListener('click', function(event) {
-                // Evitar que o clique no preview da imagem dispare o seletor novamente
                 imageInput.click();
             });
 

@@ -7,9 +7,19 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 <body>
-
     <div class="container">
         <h1 class="title">Criar<br>Conta</h1>
+
+        <div class="alert-container">
+            {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                    {% for category, message in messages %}
+                        <div class="alert {{ category }}">{{ message }}</div>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+        </div>
+
         <form action="/cadastrar" method="post">
             <input type="text" name="nome" placeholder="Nome" required>
             <input type="email" name="email" placeholder="Email" required>

@@ -57,6 +57,7 @@ body {
     transition: background-color 0.3s;
     margin-top: 20px;
     font-family: 'Press Start 2P', sans-serif;
+    text-align: center;
 }
 
 .btn:hover {
@@ -345,27 +346,28 @@ input2, textarea {
     align-self: center; /* Centraliza verticalmente a imagem em relação aos outros elementos */
 }
 
-.flash-messages {
-    margin: 20px 0;
+.alert-container {
+    text-align: center; /* Centraliza os alertas */
+    margin-bottom: 20px; /* Espaçamento abaixo dos alertas */
 }
 
-.flash-messages ul {
-    list-style-type: none;
-    padding: 0;
+.alert {
+    display: inline-block; /* Faz com que o alerta se comporte como um bloco */
+    padding: 15px; /* Espaçamento interno */
+    margin: 10px; /* Espaçamento externo */
+    border-radius: 5px; /* Cantos arredondados */
+    width: 80%; /* Largura do alerta */
+    max-width: 600px; /* Largura máxima */
 }
 
-.flash-messages li {
-    padding: 10px;
-    border-radius: 5px;
-    margin-bottom: 10px;
+.alert.error {
+    background-color: #f8d7da; /* Fundo vermelho claro */
+    color: #721c24; /* Texto vermelho escuro */
+    border: 1px solid #f5c6cb; /* Borda vermelha */
 }
 
-.flash-messages .success {
-    background-color: #d4edda;
-    color: #155724;
-}
-
-.flash-messages .error {
-    background-color: #f8d7da;
-    color: #721c24;
+.alert.success {
+    background-color: #d4edda; /* Fundo verde claro */
+    color: #155724; /* Texto verde escuro */
+    border: 1px solid #c3e6cb; /* Borda verde */
 }
