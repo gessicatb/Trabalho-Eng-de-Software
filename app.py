@@ -39,6 +39,7 @@ def entrar():
         flash('Senha incorreta', 'error')
     return render_template('entrar.html')
 
+
 @app.route('/cadastrar', methods=['GET', 'POST'])
 def cadastrar():
     if request.method == 'POST':
@@ -59,7 +60,11 @@ def cadastrar():
             db.session.add(novo_usuario)
             db.session.commit()
             flash('Usuário cadastrado com sucesso!', 'success')
-            return redirect(url_for('resumo'))
+
+            # Logar automaticamente o usuário
+            session['usuario_id'] = novo_usuario.id  # Armazena o ID do novo usuário na sessão
+            
+            return redirect(url_for('resumo'))  # Redireciona para a página de resumo
         except Exception as e:
             db.session.rollback()
             flash(f"Erro ao cadastrar usuário: {e}", 'error')
@@ -86,6 +91,13 @@ def usuario():
         flash('Erro ao carregar a página do usuário.', 'error')
         return redirect(url_for('home'))
 
+
+@app.route('/suporte')
+def suporte():
+    # Acessível por qualquer usuário logado
+    return render_template('suporte.html')
+
+
 @app.route('/cadastrar_jogo', methods=['GET', 'POST'])
 def cadastrar_jogo():
     if 'usuario_id' not in session:
@@ -104,17 +116,13 @@ def cadastrar_jogo():
             db.session.add(novo_jogo)
             db.session.commit()
             flash('Jogo cadastrado com sucesso!', 'success')
-            return redirect(url_for('resumo'))
+            return redirect(url_for('meus+jogos'))
         except Exception as e:
             db.session.rollback()
-            flash('Erro ao cadastrar jogo.', 'error')
+            print(f"Erro ao cadastrar jogo: {e}")  # Adicionando um print para visualizar o erro no terminal
+            flash(f'Erro ao cadastrar jogo: {str(e)}', 'error')  # Mensagem de erro com detalhes
 
     return render_template('cadastrar_jogo.html')
-
-@app.route('/suporte')
-def suporte():
-    # Acessível por qualquer usuário logado
-    return render_template('suporte.html')
 
 @app.route('/cadastrar_pessoa', methods=['GET', 'POST'])
 def cadastrar_pessoa():
@@ -128,18 +136,21 @@ def cadastrar_pessoa():
         cpf = request.form['cpf']
         rede_social = request.form['rede_social']
         telefone = request.form['telefone']
-        usuario_id = session['usuario_id']  # Obtém o ID do usuário logado
+        usuario_id = session['usuario_id']
+
+        print(f"Cadastrando pessoa: {nome}, {email}, {cpf}, {rede_social}, {telefone}, {usuario_id}")
 
         nova_pessoa = Pessoa(nome=nome, email=email, cpf=cpf, rede_social=rede_social, telefone=telefone, usuario_id=usuario_id)
 
         try:
             db.session.add(nova_pessoa)
             db.session.commit()
-            flash('Pessoa cadastrada com sucesso!', 'success')  # Mensagem de sucesso
-            return redirect(url_for('resumo'))
+            flash('Pessoa cadastrada com sucesso!', 'success')
+            return redirect(url_for('minhas_pessoas'))
         except Exception as e:
             db.session.rollback()
-            flash('Erro ao cadastrar pessoa.', 'error')  # Mensagem de erro
+            print(f"Erro ao cadastrar pessoa: {e}")
+            flash(f'Erro ao cadastrar pessoa: {str(e)}', 'error')
 
     return render_template('cadastrar_pessoa.html')
 
