@@ -344,3 +344,28 @@ input2, textarea {
     margin: 0 20px; /* Espaçamento à esquerda e à direita da imagem */
     align-self: center; /* Centraliza verticalmente a imagem em relação aos outros elementos */
 }
+
+.flash-messages {
+    margin: 20px 0;
+}
+
+.flash-messages ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.flash-messages li {
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.flash-messages .success {
+    background-color: #d4edda;
+    color: #155724;
+}
+
+.flash-messages .error {
+    background-color: #f8d7da;
+    color: #721c24;
+}

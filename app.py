@@ -4,6 +4,7 @@ from models.pessoa import Pessoa
 from models.jogo import Jogo
 from models.db import db
 from flask_sqlalchemy import SQLAlchemy
+from flask import flash
 from werkzeug.security import generate_password_hash, check_password_hash
 import configparser 
 
