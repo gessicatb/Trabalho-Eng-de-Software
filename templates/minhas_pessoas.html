@@ -16,8 +16,6 @@
         <a href="/usuario" class="nav-item user-icon">
             <img src="{{ url_for('static', filename='images/user_icon.png') }}" alt="User" class="user-icon-img">
         </a>
-        <a href="/meus_jogos" class="nav-item">Meus Jogos</a>
-        <a href="/minhas_pessoas" class="nav-item">Minhas Pessoas</a>
     </div>
 
     <div class="container">
@@ -29,7 +27,7 @@
                 <li>Você ainda não tem pessoas cadastradas.</li>
             {% endfor %}
         </ul>
-        <a href="/usuario" class="btn">Voltar</a>
+        <a href="/usuario" class="btn voltar">Voltar</a>
     </div>
 </body>
 </html>

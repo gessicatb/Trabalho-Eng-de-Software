@@ -13,35 +13,39 @@
         </a>
         <a href="/suporte" class="nav-item">Suporte</a>
         <a href="/cadastrar_jogo" class="nav-item">Cadastrar</a>
-        <a href="/usuario" class="nav-item user-icon"> <!-- Link para a página do usuário -->
+        <a href="/usuario" class="nav-item user-icon">
             <img src="{{ url_for('static', filename='images/user_icon.png') }}" alt="User" class="user-icon-img">
         </a>
     </div>
 
-    <div class="container-gain"> <!-- Contêiner principal com novo nome -->
-        <h1>Distribuidora</h1> <!-- Título principal -->
+    <div class="container-gain">
+        <h1>Distribuidora</h1>
         
         <div class="ganhos">
+            <!-- Ganhos do Mês -->
             <div class="ganho">
-                <h2>Ganhos - Setembro</h2>
-                <p>R$ 0,00</p>
+                <h2>Ganhos de {{ mes }}</h2>
+                <p>R$ {{ total_ganhos_mes | round(2) }}</p>
+                <!-- Se quiser listar os ganhos do mês -->
             </div>
-        
-            <!-- Adicione a imagem da moeda aqui -->
+            
             <img src="{{ url_for('static', filename='images/coin.png') }}" alt="Moeda" class="coin-icon">
-        
+            
+            <!-- Ganhos Totais -->
             <div class="ganho">
                 <h2>Ganhos - Total</h2>
-                <p>R$ 0,00</p>
+                <p>R$ {{ total_ganhos | round(2) }}</p>
+                <!-- Se quiser listar todos os ganhos -->
             </div>
         </div>
-        
 
-        <h3>Painel de Controle</h3> <!-- Título entre os ganhos e o gráfico -->
-
+        <h3>Painel de Controle</h3>
         <div class="grafico">
-            <p>Ainda Não Há Dados Mensais</p> <!-- Contêiner do gráfico -->
+            <p>Ainda Não Há Dados Mensais</p>
         </div>
+
+        <!-- Outros conteúdos -->
     </div>
 </body>
 </html>
+

@@ -1,12 +1,20 @@
+
+import configparser
 from flask import Flask, render_template, request, redirect, url_for, flash, session
+from flask_babel import Babel, format_date  # Certifique-se de importar Babel e format_date
 from models.usuario import Usuario
 from models.pessoa import Pessoa
 from models.jogo import Jogo
+from models.ganho import Ganho
 from models.db import db
+from datetime import datetime
+from sqlalchemy import extract
 from werkzeug.security import generate_password_hash, check_password_hash
-import configparser
 
 app = Flask(__name__)
+
+app.config['BABEL_DEFAULT_LOCALE'] = 'pt_BR'  # Alterado para pt_BR
+babel = Babel(app)  # Inicializa o Babel
 
 config = configparser.ConfigParser()
 config.read('database.ini')
@@ -19,6 +27,7 @@ db.init_app(app)
 @app.route('/')
 def home():
     return render_template('index.html')
+
 
 @app.route('/entrar', methods=['GET', 'POST'])
 def entrar():
@@ -72,20 +81,67 @@ def cadastrar():
 
     return render_template('cadastrar.html')
 
+
+
+from sqlalchemy import func
+from babel.dates import format_date
+
+
+from babel.dates import format_date
+from sqlalchemy import func
+
+from sqlalchemy import extract
+from babel.dates import format_date
+
 @app.route('/resumo')
 def resumo():
-    try:
-        return render_template('resumo.html')
-    except Exception as e:
-        print(f"Erro ao renderizar página de resumo: {e}")
-        flash('Erro ao carregar o resumo.', 'error')
-        return redirect(url_for('home'))
+    # Verifica se o usuário está logado
+    if 'usuario_id' not in session:
+        flash('Você precisa estar logado para acessar o resumo.', 'error')
+        return redirect(url_for('entrar'))
+
+    usuario_id = session['usuario_id']
+
+    # Obtém o mês atual em português
+    mes_atual_pt = format_date(datetime.now(), format='MMMM', locale='pt_BR')
+
+    # Obter os ganhos do mês atual usando o campo 'data'
+    ganhos_mes = db.session.query(Ganho).filter(
+        Ganho.usuario_id == usuario_id,
+        extract('month', Ganho.data) == datetime.now().month,
+        extract('year', Ganho.data) == datetime.now().year
+    ).all()
+
+    # Obter todos os ganhos do usuário
+    ganhos_totais = db.session.query(Ganho).filter(
+        Ganho.usuario_id == usuario_id
+    ).all()
+
+    # Calcular as somas
+    total_ganhos_mes = sum(ganho.valor for ganho in ganhos_mes) or 0
+    total_ganhos = sum(ganho.valor for ganho in ganhos_totais) or 0
+
+    return render_template(
+        'resumo.html',
+        mes=mes_atual_pt,
+        total_ganhos_mes=total_ganhos_mes,
+        total_ganhos=total_ganhos
+    )
+
 
 
 @app.route('/usuario')
 def usuario():
+    if 'usuario_id' not in session:
+        flash('Você precisa estar logado para acessar seu perfil.', 'error')
+        return redirect(url_for('entrar'))  # Redireciona para a página de login se não estiver logado
+
+    usuario_id = session['usuario_id']  # Obtém o ID do usuário logado
+    usuario = Usuario.query.get(usuario_id)  # Obtém o usuário logado
+    ganhos = Ganho.query.filter_by(usuario_id=usuario_id).all()  # Obtém os ganhos do usuário logado
+    
     try:
-        return render_template('usuario.html')
+        return render_template('usuario.html', usuario=usuario, ganhos=ganhos) 
     except Exception as e:
         print(f"Erro ao renderizar página de usuário: {e}")
         flash('Erro ao carregar a página do usuário.', 'error')
@@ -176,6 +232,44 @@ def minhas_pessoas():
 
     return render_template('minhas_pessoas.html', pessoas=pessoas)
 
+@app.route('/adicionar_ganho', methods=['GET', 'POST'])
+def adicionar_ganho():
+    # Verifica se o usuário está logado
+    if 'usuario_id' not in session:
+        flash('Você precisa estar logado para adicionar um ganho.', 'error')
+        return redirect(url_for('entrar'))
+
+    if request.method == 'POST':
+        valor = request.form.get('valor')
+        descricao = request.form.get('descricao')
+        usuario_id = session['usuario_id']
+
+        # Obtém a data atual
+        data_atual = datetime.now()
+
+        # Obtém o mês atual em português
+        mes_atual = format_date(data_atual, format='MMMM', locale='pt_BR').lower()
+
+        # Criar um novo ganho
+        novo_ganho = Ganho(
+            valor=valor,
+            descricao=descricao,
+            data=data_atual,
+            mes=mes_atual,
+            usuario_id=usuario_id
+        )
+
+        try:
+            db.session.add(novo_ganho)
+            db.session.commit()
+            flash('Ganho adicionado com sucesso!', 'success')
+            return redirect(url_for('resumo'))
+        except Exception as e:
+            db.session.rollback()
+            flash(f'Erro ao adicionar ganho: {e}', 'error')
+            return render_template('adicionar_ganho.html')
+
+    return render_template('adicionar_ganho.html')
 
 if __name__ == '__main__':
     with app.app_context():  # Certifique-se de usar o contexto da aplicação
