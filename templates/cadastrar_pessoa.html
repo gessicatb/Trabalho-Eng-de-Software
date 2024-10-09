@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastrar Pessoa - Distribuidora de Jogos</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="navbar-gain">
+        <a href="/resumo" class="nav-item control-button">
+            <img src="{{ url_for('static', filename='images/controller.png') }}" alt="Control" class="controller-icon">
+        </a>
+        <a href="/suporte" class="nav-item">Suporte</a>
+        <a href="/cadastrar_jogo" class="nav-item">Cadastrar</a>
+        <a href="/usuario" class="nav-item user-icon">
+            <img src="{{ url_for('static', filename='images/user_icon.png') }}" alt="User" class="user-icon-img">
+        </a>
+    </div>
+
+    <div class="container-user">
+        <h1>Cadastrar Pessoa</h1>
+
+        <form action="/registrar_pessoa" method="POST"> <!-- Altere a ação conforme necessário -->
+            <label for="nome">Nome:</label>
+            <input type="text" id="nome" name="nome" required>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="cpf">CPF:</label>
+            <input type="text" id="cpf" name="cpf" required>
+
+            <label for="rede_social">Rede Social:</label>
+            <input type="text" id="rede_social" name="rede_social">
+
+            <label for="telefone">Telefone:</label>
+            <input type="text" id="telefone" name="telefone">
+
+            <button class = "btn" type="submit">Cadastrar</button>
+        </form>
+    </div>
+</body>
+</html>

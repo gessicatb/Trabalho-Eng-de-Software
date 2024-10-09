@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+=======
+
+>>>>>>> 53582c6 (Atualiza arquivos e configurações do projeto)
 @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
 
 /* Estilos do Body */
@@ -55,6 +59,11 @@ body {
     text-decoration: none;
     border-radius: 5px;
     transition: background-color 0.3s;
+<<<<<<< HEAD
+=======
+    margin-top: 20px;
+    font-family: 'Press Start 2P', sans-serif;
+>>>>>>> 53582c6 (Atualiza arquivos e configurações do projeto)
 }
 
 .btn:hover {
@@ -129,11 +138,21 @@ a:hover {
     margin-left: auto; /* Empurra o ícone do usuário para a direita */
 }
 
+<<<<<<< HEAD
 .user-icon-img {
     width: 30px; /* Tamanho do ícone de usuário */
     height: auto; /* Mantém a proporção da imagem */
 }
 
+=======
+/* Estilos para o ícone do usuário */
+.user-icon-img {
+    width: 40px; /* Aumente a largura do ícone do usuário */
+    height: 40px; /* Aumente a altura do ícone do usuário */
+}
+
+
+>>>>>>> 53582c6 (Atualiza arquivos e configurações do projeto)
 /* Navbar para a Página de Ganhos */
 .navbar-gain {
     position: fixed; /* Fixa a barra no topo da página */
@@ -244,3 +263,102 @@ h2 {
     margin: 10px 0; /* Espaço acima e abaixo do nome */
 }
 
+<<<<<<< HEAD
+=======
+
+/* Navbar para a Página de Ganhos */
+.navbar-gain {
+    position: fixed; /* Fixa a barra no topo da página */
+    top: 0; /* Alinha ao topo */
+    left: 0; /* Alinha à esquerda */
+    right: 0; /* Alinha à direita */
+    background-color: rgba(28, 28, 28, 0.9); /* Cor de fundo escura e transparente */
+    display: flex; /* Usa flexbox para alinhar os itens */
+    align-items: center; /* Alinha verticalmente os itens */
+    padding: 10px; /* Espaçamento interno da barra de navegação */
+    z-index: 1000; /* Garante que a barra fique acima de outros elementos */
+}
+
+/* Estilos para o contêiner de cadastro de jogo */
+.container-game-register {
+    display: flex;
+    flex-direction: column; /* Coloca os elementos em coluna */
+    align-items: center; /* Centraliza os itens horizontalmente */
+    margin-top: 80px; /* Espaço acima do contêiner para evitar sobreposição com a navbar */
+    background-color: #1c1c1c; /* Fundo do contêiner */
+    border-radius: 10px; /* Bordas arredondadas */
+    padding: 20px; /* Espaço interno do contêiner */
+    width: 90%; /* Largura do contêiner em 90% da tela */
+    max-width: 1200px; /* Largura máxima do contêiner */
+    margin-left: auto; /* Centraliza o contêiner */
+    margin-right: auto; /* Centraliza o contêiner */
+}
+
+/* Estilos para o layout do formulário */
+.form-layout {
+    display: flex; /* Usar flexbox para layout em colunas */
+    justify-content: space-between; /* Espaçamento igual entre as colunas */
+    width: 100%; /* Largura total do contêiner */
+    margin: 20px 0; /* Margem em cima e embaixo */
+}
+
+/* Estilos para a coluna esquerda */
+.left-column {
+    width: 60%; /* Largura da coluna esquerda */
+    padding-right: 20px; /* Espaço à direita da coluna */
+}
+
+/* Estilos para a coluna direita */
+.right-column {
+    width: 35%; /* Largura da coluna direita */
+}
+
+/* Estilos para os campos de texto */
+input2, textarea {
+    width: 93.5%; /* Largura total para inputs e textarea */
+    padding: 10px; /* Espaçamento interno */
+    margin: 10px 0; /* Espaço entre os inputs */
+    border: none; /* Remover bordas padrão */
+    border-radius: 5px; /* Arredondar bordas */
+    background-color: #2c2c2c; /* Cor de fundo dos inputs */
+    color: white; /* Cor do texto */
+}
+
+
+.image-upload input[type="file"] {
+    display: none; /* Oculta o botão padrão */
+}
+
+.image-preview {
+    border: 2px dashed #007BFF; /* Estilo de borda para a área de visualização */
+    border-radius: 10px; /* Bordas arredondadas */
+    padding: 20px; /* Espaçamento interno */
+    text-align: center; /* Centraliza o texto dentro da área */
+    background-color: #1c1c1c; /* Fundo da área de visualização */
+    margin-top: 10px; /* Espaço acima da área de visualização */
+}
+
+.image-preview img {
+    max-width: 100%; /* Limita a largura da imagem para não exceder a área de visualização */
+    height: auto; /* Mantém a proporção da imagem */
+    border-radius: 10px; /* Bordas arredondadas para a imagem */
+}
+/* Estilo personalizado para o botão de upload */
+.image-upload::before {
+    content: "Escolher arquivo"; /* Texto do botão */
+    margin-top: 10px;
+    display: inline-block; /* Exibe como um bloco em linha */
+    background-color: #007BFF; /* Cor de fundo do botão */
+    color: white; /* Cor do texto */
+    padding: 10px 20px; /* Espaçamento interno do botão */
+    border-radius: 5px; /* Bordas arredondadas */
+    cursor: pointer; /* Cursor de mão ao passar o mouse */
+}
+
+.coin-icon {
+    width: 130px; /* Ajuste o tamanho da imagem conforme necessário */
+    height: auto; /* Mantém a proporção da imagem */
+    margin: 0 20px; /* Espaçamento à esquerda e à direita da imagem */
+    align-self: center; /* Centraliza verticalmente a imagem em relação aos outros elementos */
+}
+>>>>>>> 53582c6 (Atualiza arquivos e configurações do projeto)

@@ -35,6 +35,40 @@ def resumo():
 def usuario():
     return render_template('usuario.html')  # Certifique-se de que o nome do arquivo está correto
 
+<<<<<<< HEAD
 
 if __name__ == '__main__':
     app.run(debug=True)
+=======
+@app.route('/cadastrar_jogo', methods=['GET', 'POST'])  # Nova rota para cadastrar jogos
+def cadastrar_jogo():
+    if request.method == 'POST':
+        nome_jogo = request.form['nome_jogo']
+        genero = request.form['genero']
+        descricao = request.form['descricao']
+        # Adicione lógica para salvar o novo jogo
+        return redirect(url_for('resumo'))  # Redireciona para a tela de resumo após cadastro
+    return render_template('cadastrar_jogo.html')  # Rendeiriza o formulário para cadastrar jogo
+
+@app.route('/suporte')
+def suporte():
+    return render_template('suporte.html')  # Renderiza o arquivo suporte.html
+
+@app.route('/cadastrar_pessoa', methods=['GET', 'POST'])  # Nova rota para cadastrar pessoa
+def cadastrar_pessoa():
+    if request.method == 'POST':
+        nome = request.form['nome']
+        email = request.form['email']
+        cpf = request.form['cpf']
+        rede_social = request.form['rede_social']
+        telefone = request.form['telefone']
+        
+        # Adicione a lógica para salvar os dados da pessoa no banco de dados
+        
+        return redirect(url_for('resumo'))  # Redireciona para a tela de resumo após o cadastro
+    return render_template('cadastrar_pessoa.html')  # Renderiza o formulário para cadastrar pessoa
+
+
+if __name__ == '__main__':
+    app.run(debug=True)
+>>>>>>> 53582c6 (Atualiza arquivos e configurações do projeto)

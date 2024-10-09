@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastrar Jogo - Distribuidora de Jogos</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="navbar-gain">
+        <a href="/resumo" class="nav-item control-button">
+            <img src="{{ url_for('static', filename='images/controller.png') }}" alt="Control" class="controller-icon">
+        </a>
+        <a href="/suporte" class="nav-item">Suporte</a>
+        <a href="/cadastrar_jogo" class="nav-item">Cadastrar</a>
+        <a href="/usuario" class="nav-item user-icon">
+            <img src="{{ url_for('static', filename='images/user_icon.png') }}" alt="User" class="user-icon-img">
+        </a>
+    </div>
+
+    <div class="container-game-register">
+        <h1>Cadastrar Jogo</h1>
+        <form action="/cadastrar_jogo" method="POST" enctype="multipart/form-data">
+            <div class="form-layout">
+                <div class="left-column">
+                    <label for="nome_jogo">Título do Jogo:</label>
+                    <input type="text" id="nome_jogo" name="nome_jogo" required>
+
+                    <label for="plataforma">Plataforma:</label>
+                    <input type="text" id="plataforma" name="plataforma" required placeholder="Insira a plataforma">
+
+                    <label for="genero">Gênero:</label>
+                    <input type="text" id="genero" name="genero" required>
+
+                    <label for="data_lancamento">Data de Lançamento:</label>
+                    <input type="date" id="data_lancamento" name="data_lancamento" required>
+
+                    <label for="isrc">ISRC:</label>
+                    <input type="text" id="isrc" name="isrc" required>
+
+                    <label for="descricao">Informações sobre desenvolvedores:</label>
+                    <textarea id="descricao" name="descricao" required placeholder="Insira informações sobre desenvolvedores, designers, etc."></textarea>
+                </div>
+
+                <div class="right-column">
+                    <label for="capa">Imagem da Capa:</label>
+                    <div class="image-upload" id="imageUpload">
+                        <input type="file" id="capa" name="capa" accept="image/*" required>
+                        <div class="image-preview" id="imagePreview">
+                            <p>Clique para escolher uma imagem</p>
+                        </div>
+                    </div>                    
+                </div>
+            </div>
+            <button class="btn" type="submit">Cadastrar</button>
+        </form>
+    </div>
+
+    <script>
+        // Script para pré-visualização da imagem e abrir seletor ao clicar
+        document.addEventListener('DOMContentLoaded', function() {
+            const imageUpload = document.getElementById('imageUpload');
+            const imageInput = document.getElementById('capa');
+            const imagePreview = document.getElementById('imagePreview');
+
+            // Abrir seletor de arquivo ao clicar na área de upload
+            imageUpload.addEventListener('click', function(event) {
+                // Evitar que o clique no preview da imagem dispare o seletor novamente
+                imageInput.click();
+            });
+
+            // Previsualizar a imagem selecionada
+            imageInput.addEventListener('change', function() {
+                const file = this.files[0];
+                if (file) {
+                    const reader = new FileReader();
+                    reader.onload = function(event) {
+                        imagePreview.innerHTML = `<img src="${event.target.result}" alt="Imagem da Capa" class="preview-img">`;
+                    }
+                    reader.readAsDataURL(file);
+                } else {
+                    imagePreview.innerHTML = `<p>Clique para escolher uma imagem</p>`;
+                }
+            });
+        });
+    </script>
+</body>
+</html>
