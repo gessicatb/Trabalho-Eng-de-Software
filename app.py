@@ -1,5 +1,7 @@
 from flask import Flask, render_template, request, redirect, url_for
 from models.usuario import Usuario
+from models.pessoa import Pessoa
+from models.jogo import Jogo
 from models.db import db
 from flask_sqlalchemy import SQLAlchemy
 from werkzeug.security import generate_password_hash, check_password_hash
@@ -46,37 +48,46 @@ def cadastrar():
             db.session.add(novo_usuario)
             db.session.commit()
             print("Usuário cadastrado com sucesso!")  
-            return redirect(url_for('resumo'))  # Redirecionar após sucesso
+            return redirect(url_for('resumo')) 
         except Exception as e:
             db.session.rollback() 
             print(f"Erro ao cadastrar usuário: {e}")  
-            # Você pode considerar renderizar um template de erro ou mostrar uma mensagem ao usuário
+           
 
-    return render_template('cadastrar.html')  # Retornar o formulário em caso de GET
+    return render_template('cadastrar.html')  
 
 @app.route('/resumo')
 def resumo():
-    return render_template('resumo.html')  # Crie este arquivo para a tela de resumo
+    return render_template('resumo.html')  
 
 @app.route('/usuario')
 def usuario():
-    return render_template('usuario.html')  # Certifique-se de que o nome do arquivo está correto
+    return render_template('usuario.html')  
 
-@app.route('/cadastrar_jogo', methods=['GET', 'POST'])  # Nova rota para cadastrar jogos
+@app.route('/cadastrar_jogo', methods=['GET', 'POST'])  
 def cadastrar_jogo():
     if request.method == 'POST':
         nome_jogo = request.form['nome_jogo']
         genero = request.form['genero']
         descricao = request.form['descricao']
-        # Adicione lógica para salvar o novo jogo
-        return redirect(url_for('resumo'))  # Redireciona para a tela de resumo após cadastro
-    return render_template('cadastrar_jogo.html')  # Renderiza o formulário para cadastrar jogo
+        novo_jogo = Jogo(nome_jogo=nome_jogo, genero=genero, descricao=descricao)
+        
+        try:
+            db.session.add(novo_jogo)
+            db.session.commit()
+            print("Jogo cadastrado com sucesso!")  
+        except Exception as e:
+            db.session.rollback() 
+            print(f"Erro ao cadastrar jogo: {e}") 
+        
+        return redirect(url_for('resumo')) 
+    return render_template('cadastrar_jogo.html') 
 
 @app.route('/suporte')
 def suporte():
-    return render_template('suporte.html')  # Renderiza o arquivo suporte.html
+    return render_template('suporte.html') 
 
-@app.route('/cadastrar_pessoa', methods=['GET', 'POST'])  # Nova rota para cadastrar pessoa
+@app.route('/cadastrar_pessoa', methods=['GET', 'POST'])  
 def cadastrar_pessoa():
     if request.method == 'POST':
         nome = request.form['nome']
@@ -85,10 +96,18 @@ def cadastrar_pessoa():
         rede_social = request.form['rede_social']
         telefone = request.form['telefone']
         
-        # Adicione a lógica para salvar os dados da pessoa no banco de dados
+        nova_pessoa = Pessoa(nome=nome, email=email, cpf=cpf, rede_social=rede_social, telefone=telefone)
         
-        return redirect(url_for('resumo'))  # Redireciona para a tela de resumo após o cadastro
-    return render_template('cadastrar_pessoa.html')  # Renderiza o formulário para cadastrar pessoa
+        try:
+            db.session.add(nova_pessoa)
+            db.session.commit()
+            print("Pessoa cadastrada com sucesso!")  
+        except Exception as e:
+            db.session.rollback()  
+            print(f"Erro ao cadastrar pessoa: {e}")  
+        
+        return redirect(url_for('resumo'))  
+    return render_template('cadastrar_pessoa.html') 
 
 if __name__ == '__main__':
     app.run(debug=True)
