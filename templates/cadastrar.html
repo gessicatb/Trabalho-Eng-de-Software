@@ -7,16 +7,6 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 <body>
-<<<<<<< HEAD
-    <a href="/resumo" class="control-button"> <!-- O ícone do controle agora funciona como botão de voltar -->
-        <img src="{{ url_for('static', filename='images/controller.png') }}" alt="Control" class="controller-icon">
-    </a>
-    <div class="container">
-        <h1 class="title">
-            Criar<br>
-            Conta
-        </h1>
-=======
     <div class="navbar-gain">
         <a href="/resumo" class="nav-item control-button">
             <img src="{{ url_for('static', filename='images/controller.png') }}" alt="Control" class="controller-icon">
@@ -30,24 +20,15 @@
 
     <div class="container">
         <h1 class="title">Criar<br>Conta</h1>
->>>>>>> 53582c6 (Atualiza arquivos e configurações do projeto)
         <form action="/cadastrar" method="post">
             <input type="text" name="nome" placeholder="Nome" required>
             <input type="email" name="email" placeholder="Email" required>
             <input type="password" name="senha" placeholder="Senha" required>
             <input type="text" name="cnpj" placeholder="CNPJ" required>
             <input type="text" name="dados_bancarios" placeholder="Dados Bancários" required>
-<<<<<<< HEAD
-            <button type="submit">Cadastrar</button>
-=======
             <button class="btn" type="submit">Cadastrar</button>
->>>>>>> 53582c6 (Atualiza arquivos e configurações do projeto)
         </form>
         <p>Já possui uma conta? <a href="/entrar" class="entrar">Entre aqui</a></p>
     </div>
 </body>
-<<<<<<< HEAD
 </html>
-=======
-</html>
->>>>>>> 53582c6 (Atualiza arquivos e configurações do projeto)
