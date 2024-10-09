@@ -34,6 +34,7 @@ def entrar():
         flash('CNPJ ou senha incorretos', 'error')
     return render_template('entrar.html')
 
+@app.route('/cadastrar', methods=['GET', 'POST'])
 def cadastrar():
     if request.method == 'POST':
         nome = request.form.get('nome')
