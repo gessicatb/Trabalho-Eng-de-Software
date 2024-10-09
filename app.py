@@ -29,11 +29,10 @@ def entrar():
         senha = request.form['senha']
         usuario = Usuario.query.filter_by(cnpj=cnpj).first()
         if usuario and check_password_hash(usuario.senha, senha):
-            return redirect(url_for('resumo'))  
+            return redirect(url_for('resumo')) 
         flash('CNPJ ou senha incorretos', 'error')
     return render_template('entrar.html')
 
-@app.route('/cadastrar', methods=['GET', 'POST'])
 def cadastrar():
     if request.method == 'POST':
         nome = request.form.get('nome')
