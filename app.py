@@ -172,7 +172,7 @@ def cadastrar_jogo():
             db.session.add(novo_jogo)
             db.session.commit()
             flash('Jogo cadastrado com sucesso!', 'success')
-            return redirect(url_for('meus+jogos'))
+            return redirect(url_for('meus_jogos'))
         except Exception as e:
             db.session.rollback()
             print(f"Erro ao cadastrar jogo: {e}")  # Adicionando um print para visualizar o erro no terminal
