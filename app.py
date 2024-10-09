@@ -1,8 +1,10 @@
 from flask import Flask, render_template, request, redirect, url_for
-from models import db,Usuario,Pessoa,Jogo
+from models.usuario import Usuario
+from models.db import db
 from flask_sqlalchemy import SQLAlchemy
 from werkzeug.security import generate_password_hash, check_password_hash
 import configparser 
+
 
 app = Flask(__name__)
 
@@ -12,6 +14,7 @@ config.read('database.ini')
 app.config['SQLALCHEMY_DATABASE_URI'] = f"postgresql://{config['postgresql']['user']}:{config['postgresql']['password']}@{config['postgresql']['host']}:{config['postgresql']['port']}/{config['postgresql']['dbname']}"
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.secret_key = 'sua_chave_secreta' 
+db.init_app(app)
 
 @app.route('/')
 def home():
@@ -26,27 +29,28 @@ def entrar():
         return redirect(url_for('resumo'))  # Redireciona para a tela de resumo após entrar
     return render_template('entrar.html')
 
-@app.route('/cadastrar_pessoa', methods=['GET', 'POST'])  
-def cadastrar_pessoa():
+@app.route('/cadastrar', methods=['GET', 'POST'])
+def cadastrar():
     if request.method == 'POST':
-        nome = request.form['nome']
-        email = request.form['email']
-        cpf = request.form['cpf']
-        rede_social = request.form['rede_social']
-        telefone = request.form['telefone']
-        
-        nova_pessoa = Pessoa(nome=nome, email=email, cpf=cpf, rede_social=rede_social, telefone=telefone)
-        
+        nome = request.form.get('nome')
+        email = request.form.get('email')
+        senha = generate_password_hash(request.form.get('senha'))
+        cnpj = request.form.get('cnpj')
+        dados_bancarios = request.form.get('dados_bancarios')
+
+        novo_usuario = Usuario(nome=nome, email=email, senha=senha, cnpj=cnpj, dados_bancarios=dados_bancarios)
+
         try:
-            db.session.add(nova_pessoa)
+            db.session.add(novo_usuario)
             db.session.commit()
-            print("Pessoa cadastrada com sucesso!")  
+            print("Usuário cadastrado com sucesso!")  
+            return redirect(url_for('resumo'))  # Redirecionar após sucesso
         except Exception as e:
             db.session.rollback() 
-            print(f"Erro ao cadastrar pessoa: {e}")  
-        
-        return redirect(url_for('resumo')) 
-    return render_template('cadastrar_pessoa.html')  
+            print(f"Erro ao cadastrar usuário: {e}")  
+            # Você pode considerar renderizar um template de erro ou mostrar uma mensagem ao usuário
+
+    return render_template('cadastrar.html')  # Retornar o formulário em caso de GET
 
 @app.route('/resumo')
 def resumo():
