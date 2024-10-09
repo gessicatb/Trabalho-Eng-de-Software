@@ -26,19 +26,27 @@ def entrar():
         return redirect(url_for('resumo'))  # Redireciona para a tela de resumo após entrar
     return render_template('entrar.html')
 
-@app.route('/cadastrar', methods=['GET', 'POST'])
-def cadastrar():
+@app.route('/cadastrar_pessoa', methods=['GET', 'POST'])  
+def cadastrar_pessoa():
     if request.method == 'POST':
         nome = request.form['nome']
         email = request.form['email']
-        senha = generate_password_hash(request.form['senha'])
-        cnpj = request.form['cnpj']
-        dados_bancarios = request.form['dados_bancarios']
-        novo_usuario = Usuario(nome=nome, email=email, senha=senha, cnpj=cnpj, dados_bancarios=dados_bancarios)
-        db.session.add(novo_usuario)
-        db.session.commit()
-        return redirect(url_for('resumo'))  # Redireciona para a tela de resumo após cadastro
-    return render_template('cadastrar.html')
+        cpf = request.form['cpf']
+        rede_social = request.form['rede_social']
+        telefone = request.form['telefone']
+        
+        nova_pessoa = Pessoa(nome=nome, email=email, cpf=cpf, rede_social=rede_social, telefone=telefone)
+        
+        try:
+            db.session.add(nova_pessoa)
+            db.session.commit()
+            print("Pessoa cadastrada com sucesso!")  
+        except Exception as e:
+            db.session.rollback() 
+            print(f"Erro ao cadastrar pessoa: {e}")  
+        
+        return redirect(url_for('resumo')) 
+    return render_template('cadastrar_pessoa.html')  
 
 @app.route('/resumo')
 def resumo():
